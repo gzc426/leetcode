@@ -1,2 +1,3 @@
 # leetcode
 每天一道leetcode
+>今天是2018年11月23,公众号：程序员乔戈里 博主会在毕业前每天刷一道leetcode,目前已经建立了leetcode刷题打卡群，需要的加我微信sometimesnaive123,进群，一周至少提交一道
