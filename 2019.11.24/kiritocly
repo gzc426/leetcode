@@ -1,0 +1,48 @@
+package com.zhongan;
+
+import java.util.Scanner;
+
+/**
+ * @author chenliyang
+ * @description 实现strStr()函数
+ * @date 2018/11/24
+ */
+public class Leetcode28 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String haystack = sc.next();
+        String needle = sc.next();
+        System.out.println(strStr(haystack, needle));
+    }
+
+    private static int strStr(String haystack, String needle) {
+        if (needle.length() == 0) {
+            //如果needle为空字符串则返回0
+            return 0;
+        }
+        char[] haystackCharArray = haystack.toCharArray();
+        char[] needleCharArray = needle.toCharArray();
+        for (int i = 0; i < haystackCharArray.length; i++) {
+            //遍历haystack,找到needle中的第一个字符在haystack中出现的位置的下标
+            if (haystackCharArray[i] == needleCharArray[0]) {
+                //比较needle中其他的字符是否与haystack对应位置匹配
+                int index = i + 1;
+                int j;
+                for (j = 1; index < haystackCharArray.length && j < needleCharArray.length; j++) {
+                    if (haystackCharArray[index] == needleCharArray[j]) {
+                        //字符串中字符匹配则比较下一个字符
+                        index++;
+                    } else {
+                        break;
+                    }
+                }
+                if (j == needleCharArray.length) {
+                    //字符串全部匹配则返回needle字符串第一个字符在haystack中出现位置的下标
+                    return i;
+                }
+            }
+        }
+        //未匹配则返回-1
+        return -1;
+    }
+}
