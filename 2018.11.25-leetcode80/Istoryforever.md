@@ -1,21 +1,27 @@
+leetcode number 80
 ```
 class Solution {
-    const int inf = 0x3f3f3f;
-    public:
-    int maxArea(vector<int>& height) {
-        int ans = -inf;
-        int l = 0;
-        int r = height.size() - 1;
-        while(l < r){
-            int w = r - l;
-            int h = height[l] < height[r]? height[l]:height[r];
-            int c =w * h;
-            if(ans < c) ans = c;
-            while(l < r && height[l] <= h ) l++;
-            while(l < r && height[r] <= h ) r--;
+public:
+    void swap(int &a,int &b){
+        int c = a;
+        a = b;
+        b = a;
+        
+    }
+    int removeDuplicates(vector<int>& nums) {
+        int j = -1;
+        int count = 0;
+        for(int i = 0;i < nums.size();i++){
+            if(i != 0 && nums[i] == nums[i-1])   {
+                if(count >= 1) continue;
+                ++count;
+            }
+            else
+                count = 0;
+            nums[++j]=nums[i];
         }
-        return ans;
-
+        return j+1;
+        
     }
 };
 ```
