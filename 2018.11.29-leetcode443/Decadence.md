@@ -1,5 +1,7 @@
+题目地址：
+
 https://leetcode-cn.com/problems/string-compression/
-/*
+
 
 leetcode  443
 给定一组字符，使用原地算法将其压缩。压缩后的长度必须始终小于或等于原数组长度。数组的每个元素应该是长度为1 的字符
@@ -37,7 +39,6 @@ leetcode  443
     所有字符都有一个ASCII值在[35, 126]区间内。
     1 <= len(chars) <= 1000。
 
-*/
 
 ```$java
 class Solution{
