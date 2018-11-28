@@ -1,7 +1,4 @@
-题目地址：
-
-https://leetcode-cn.com/problems/string-compression/
-
+题目地址：https://leetcode-cn.com/problems/string-compression/
 
 leetcode  443
 给定一组字符，使用原地算法将其压缩。压缩后的长度必须始终小于或等于原数组长度。数组的每个元素应该是长度为1 的字符
