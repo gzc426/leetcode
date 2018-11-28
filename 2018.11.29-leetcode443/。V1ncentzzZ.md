@@ -1,4 +1,4 @@
-    // TODO 执行比较慢，有冗余代码，待优化
+    // TODO 执行比较慢，有冗余代码，待优化 7ms
     public int compress(char[] chars) {
         if(chars.length == 0) return 0;
         char temp = chars[0];
