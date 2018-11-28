@@ -1,4 +1,5 @@
 ```
+
 class Solution {
     public int removeDuplicates(int[] nums) {
         if (nums.length < 3){
