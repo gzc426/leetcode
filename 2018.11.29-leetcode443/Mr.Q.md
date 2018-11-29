@@ -27,5 +27,6 @@ public int compress(char[] chars) {
             }
         }
     }
-    return length + 1;
+   
+   return length + 1;
 }
