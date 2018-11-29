@@ -1,16 +1,31 @@
-
-    n = len(chars)
-    cnt = 1;
-    i = 0;
-    for j in range(1, len(chars)+1):
-        if j < n and chars[j-1] == chars[j]:
-            cnt += 1;
-        else:
-            chars[i] = chars[j-1];
-            i += 1;
-            if cnt > 1:
-                for m in str(cnt):
-                    chars[i] = m;
-                    i += 1;
-            cnt = 1;
-    return i;
+public int compress(char[] chars) {
+    char data = chars[0];
+    int index = 0;
+    int length = -1;
+    if(chars.length == 1){
+        return 1;
+    }else {
+        for (int i = 1;i< chars.length;i++){
+            if(chars[i]!=data || i == chars.length-1){
+                chars[++length]=data;
+                if(i == chars.length -1 && chars[i]==data){
+                    i++;
+                }
+                if(i-index>1){
+                    char[] num = String.valueOf((i-index)).toCharArray();
+                    for (int j=0;j<num.length;j++){
+                        chars[++length] = num[j];
+                    }
+                }
+                if(i < chars.length - 1){
+                    data = chars[i];
+                    index = i;
+                }
+                if(i == chars.length -1 && chars[i]!=data){
+                    chars[++length]=chars[i];
+                }
+            }
+        }
+    }
+    return length + 1;
+}
