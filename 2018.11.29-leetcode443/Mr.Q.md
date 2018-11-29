@@ -1,1 +1,16 @@
 
+    n = len(chars)
+    cnt = 1;
+    i = 0;
+    for j in range(1, len(chars)+1):
+        if j < n and chars[j-1] == chars[j]:
+            cnt += 1;
+        else:
+            chars[i] = chars[j-1];
+            i += 1;
+            if cnt > 1:
+                for m in str(cnt):
+                    chars[i] = m;
+                    i += 1;
+            cnt = 1;
+    return i;
