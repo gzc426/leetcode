@@ -13,11 +13,10 @@ public class for125 {
         		++i;
         	else if(!Character.isLetterOrDigit(cs[j]))
         		--j;
-        	else if (Character.toLowerCase(cs[i]) == Character.toLowerCase(cs[j]))        		
-            {
-                ++i;
-                --j;
-            }
+            else if (cs[i]==cs[j]||(cs[i]>64&&cs[j]>64&&Math.abs(cs[i]-cs[j])==32)){
+                i++;
+                j--;
+            } 
             else 
             return false;
 
