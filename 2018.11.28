@@ -1,0 +1,32 @@
+
+/**
+ * Created by zongjianwei
+ * DATE: 21:32 2018/11/28
+ * Desc: 压缩字符数组
+ */
+public class StringCompression {
+    public int compress(char[] chars){
+        int m = 0;
+        int n = 0;
+        for(int i=0;i<chars.length;i++){
+            if(i+1 == chars.length || chars[i+1]!=chars[i]){
+                chars[m++] = chars[n];
+                if(i>n){
+                    for(int j=0;j<(""+(i-n+1)).toCharArray().length;j++){
+                        chars[m++] = chars[j];
+                    }
+                }
+                n = i +1;
+            }
+        }
+        return m;
+    }
+
+    public static void main(String[] args) {
+        char[] chars = {'a','a','b','b','c','c','c'};
+        StringCompression sc = new StringCompression();
+        int length = sc.compress(chars);
+        System.out.println(length);
+
+    }
+}
