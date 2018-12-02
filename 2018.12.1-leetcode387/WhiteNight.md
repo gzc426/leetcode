@@ -27,6 +27,25 @@
 >
 >        return -1;
 >    }
+>    
+>    public int firstUniqChar(String s) {
+>        int start;
+>        int end;
+>        int result = s.length();
+>
+>        for (char i = 'a'; i <= 'z'; i++) {
+>            start = s.indexOf(i);
+>            end = s.lastIndexOf(i);
+>            if (start == end && start != -1){
+>                result = Math.min(result,start);
+>            }
+>        }
+>
+>        if (result == s.length())
+>            return -1;
+>        else
+>            return result;
+>    }
 >
 >    public static void main(String[] args) {
 >        S4 s = new S4();
@@ -39,3 +58,4 @@
 >    }
 >}
 >```
+
