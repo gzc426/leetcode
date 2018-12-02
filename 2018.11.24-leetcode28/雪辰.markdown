@@ -1,0 +1,29 @@
+class Solution:
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        lenNeedle=len(needle)
+        if not needle.strip():
+            return (0)
+        if len(needle)>len(haystack):
+            return(-1)
+        match=0
+        for a in range(len(haystack)-lenNeedle+1):
+            m = a
+            match = 0
+            for i in range(lenNeedle):
+                if haystack[m]==needle[i]:
+                    match+=1
+                    m+=1
+                if match == lenNeedle:
+                    break
+            if match == lenNeedle:
+                break
+        if match == lenNeedle:
+            return(a)
+        else:
+            return(-1)
+                        
