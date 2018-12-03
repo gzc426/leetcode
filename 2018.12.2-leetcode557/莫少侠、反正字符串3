@@ -1,0 +1,41 @@
+```
+/**
+     * 557. 反转字符串中的单词3
+     * @param s 输入: "Let's take LeetCode contest"
+                输出: "s'teL ekat edoCteeL tsetnoc"
+     * @return
+     */
+    public static String reverseWords(String s) {
+        if(s == null || s.length() <= 1) {
+            return s;
+        }
+        String[] splitRes = s.split(" ");
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < splitRes.length; i++) {
+            splitRes[i] = reverseStr(splitRes[i]);
+            builder.append(splitRes[i]);
+            if(i != splitRes.length -1) {
+                //当不是最后一句的时候才拼接空格
+                builder.append(" ");
+            }
+        }
+        return builder.toString();
+    }
+
+    public static String reverseStr(String s) {
+        if(s == null || s.length() <= 1) {
+            return s;
+        }
+        int left = 0;
+        int right = s.length() - 1;
+        char[] chars = s.toCharArray();
+        while (left < right){
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left ++;
+            right --;
+        }
+        return String.copyValueOf(chars);
+    }
+```
