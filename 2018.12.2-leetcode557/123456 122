@@ -1,0 +1,83 @@
+#include<iostream>
+#include<cstdio>
+#include<vector>
+using namespace std;
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string >>a;
+        vector<int>pos(n,-1);
+        SolvenQueensProblem(n,0,pos,a);
+        return a;
+    }
+    void SolvenQueensProblem(int n,int row,vector<int>&pos,vector<vector<string>>&a)
+    {
+       // cout<<n<<" "<<row<<" "<<endl;
+         /*for(int i=0;i<pos.size();i++)
+            {
+            //   cout<<pos[i]<<endl;
+            }*/
+        if(row==n)
+        {
+           /* for(int i=0;i<pos.size();i++)
+            {
+                cout<<pos[i]<<endl;
+            }*/
+         //   cout<<n<<endl;
+            vector<string>s(n,string(n,'.'));
+
+            for(int i=0;i<n;i++)
+            {
+                s[i][pos[i]]='Q';
+                cout<<i<<" "<<pos[i]<<endl;
+            }
+           /* for(int i=0;i<s.size();i++)
+            {
+                cout<<s[i]<<endl;
+            }*/
+            a.push_back(s);
+            return ;
+        }
+        int col=0;
+        for(col=0;col<n;col++)
+        {
+            bool foundstate=true;
+            for(int queen=0;queen<row;queen++)
+            {
+                if(pos[queen]==col||queen-pos[queen]==row-col||queen+pos[queen]==row+col)
+                {
+                    /* if(row==2&&queen==1)
+                     {
+                         cout<<queen+pos[queen]<<endl;
+                         cout<<row+col<<endl;
+                     }*/
+                    foundstate=false;
+                    break;
+                }
+            }
+            if(foundstate==true)
+            {
+
+                pos[row]=col;
+               // cout<<row<<" "<<col<<endl;
+                SolvenQueensProblem(n,row+1,pos,a);
+
+            }
+        }
+
+      return ;
+    }
+};
+int main()
+{
+    Solution solution;
+    vector<vector<string>>a=solution.solveNQueens(4);
+    for(int i=0;i<1;i++)
+    {
+        for(int j=0;j<2;j++)
+        {
+           // cout<<a[i][j]<<endl;
+        }
+    }
+    return 0;
+}
