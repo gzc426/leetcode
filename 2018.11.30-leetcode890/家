@@ -1,0 +1,30 @@
+```
+func findAndReplacePattern(words []string, pattern string) []string {
+    l := len(pattern)
+    a := map[string]int{}
+    arr := []int{}
+    for i:=0;i<=l-1;i++{
+        if _,ok := a[string(pattern[i])];!ok {
+            a[string(pattern[i])] = len(a)
+        }
+        arr = append(arr,a[string(pattern[i])])
+    }
+    newstr := []string{}
+    for _,v := range words {
+        a = map[string]int{}
+        flag := true
+        for i:=0;i<len(v);i++{
+            if _,ok := a[string(v[i])];!ok {
+                a[string(v[i])] = len(a)
+            }
+            if a[string(v[i])] != arr[i]{
+                flag = false
+                break;
+            }
+        }
+        if flag {newstr = append(newstr,v)}
+        
+    }
+    return newstr
+}
+```

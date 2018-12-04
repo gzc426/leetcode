@@ -1,0 +1,14 @@
+```
+func firstUniqChar(s string) int {
+    numMap := [26]int{}
+	for _, v := range s {
+		numMap[v-'a'] += 1
+	}
+	for idx, v := range s {
+		if numMap[v-'a'] == 1 {
+			return idx
+		}
+	}
+	return -1
+}
+```
