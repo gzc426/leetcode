@@ -17,7 +17,7 @@
    \   \
    3    3
    
-   &emsp;
+```
   /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -40,4 +40,4 @@ class Solution {
    
     }
 }
-&emsp;
+```
