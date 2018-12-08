@@ -1,0 +1,72 @@
+public class Main103 {
+
+    public static void main(String[] args){
+        Main103 main = new Main103();
+        main.test();
+    }
+
+    public void test(){
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        List<List<Integer>> res = zigzagLevelOrder(root);
+        for (List<Integer> integerList:res){
+            System.out.println(Arrays.toString(integerList.toArray()));
+        }
+    }
+
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        if (root==null)
+            return new ArrayList<>();
+        LinkedList<TreeNode> linkedList = new LinkedList<>();
+        linkedList.add(root);
+        boolean reverse = false;
+        LinkedList<TreeNode> tmpList = new LinkedList();
+        List<List<Integer>>result = new ArrayList<>();
+        while (!linkedList.isEmpty()){
+            TreeNode tmpNode;
+            List<Integer> curList = new ArrayList<>();
+            tmpList.clear();
+            while (true) {
+                if (!reverse) {
+                    tmpNode = linkedList.pollFirst();
+                    curList.add(tmpNode.val);
+                    if (tmpNode.left!=null){
+                        tmpList.add(tmpNode.left);
+                    }
+                    if (tmpNode.right!=null){
+                        tmpList.add(tmpNode.right);
+                    }
+                } else {
+                    tmpNode = linkedList.pollLast();
+                    curList.add(tmpNode.val);
+                    if (tmpNode.right!=null)
+                        tmpList.offerFirst(tmpNode.right);
+                    if (tmpNode.left!=null)
+                        tmpList.offerFirst(tmpNode.left);
+                }
+                if (linkedList.isEmpty())
+                    break;
+            }
+            reverse = !reverse;
+            if (!curList.isEmpty()){
+                result.add(curList);
+            }
+            if (!tmpList.isEmpty()){
+                linkedList.addAll(tmpList);
+            }
+        }
+        return result;
+    }
+
+    private class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x){
+            val = x;
+        }
+    }
+}
