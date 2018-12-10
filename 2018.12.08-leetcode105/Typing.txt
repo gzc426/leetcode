@@ -1,0 +1,63 @@
+public class Main105 {
+
+    public static void main(String[] args){
+        Main105 main = new Main105();
+        main.test();
+    }
+
+    public void test(){
+        TreeNode treeNode = buildTree(new int[]{3,9,20,15,7},new int[]{9,3,15,20,7});
+        System.out.println(treeNode);
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int pLen = preorder.length;
+        int iLen = inorder.length;
+        if(pLen==0 && iLen==0){
+            return null;
+        }
+
+        Map<Integer,Integer> inMap = new HashMap<>();
+        for (int i = 0;i<inorder.length;i++){
+            inMap.put(inorder[i],i);
+        }
+
+        return  buildNode( preorder, 0, pLen-1,0, iLen-1,inMap);
+
+    }
+
+    public TreeNode buildNode(int[] preOrder, int pStart, int pEnd,int iStart,int iEnd,Map<Integer,Integer> inMap)
+    {
+        //建立根节点
+        TreeNode tree = new TreeNode(preOrder[pStart]);
+        tree.left = null;
+        tree.right = null;
+        if(pStart == pEnd && iStart == iEnd)
+        {
+            return tree;
+        }
+        int root = inMap.getOrDefault(preOrder[pStart],0);
+        //找中序遍历中的根节点
+        //划分左右子树
+        int leftLength = root - iStart;//左子树
+        int rightLength = iEnd - root;//右子树
+        //遍历左子树
+        if(leftLength>0)
+        {
+            tree.left = buildNode(preOrder,pStart+1,  pStart+leftLength, iStart, root-1, inMap);
+        }
+        //遍历右子树
+        if(rightLength>0)
+        {
+            tree.right = buildNode(preOrder,pStart+leftLength+1,  pEnd, root+1, iEnd,inMap);
+        }
+        return tree;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+}
