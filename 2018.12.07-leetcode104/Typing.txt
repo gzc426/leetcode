@@ -1,0 +1,36 @@
+public class Main104 {
+    public static void main(String[] args){
+        Main104 main = new Main104();
+        main.test();
+    }
+
+    public void test(){
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        System.out.println(maxDepth(root));
+    }
+
+    public int maxDepth(TreeNode root) {
+        int leftDep,rightDep,max;
+        if (root!=null){
+            leftDep = maxDepth(root.left);
+            rightDep = maxDepth(root.right);
+            max = leftDep>rightDep?leftDep:rightDep;
+            return max+1;
+        }
+        return 0;
+    }
+
+    private class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x){
+            val = x;
+        }
+    }
+
+}
