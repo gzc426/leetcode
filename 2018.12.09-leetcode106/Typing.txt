@@ -1,0 +1,49 @@
+public class Main106 {
+
+    public static void main(String[] args){
+        Main106 main = new Main106();
+        main.test();
+    }
+
+    public void test(){
+        TreeNode node = buildTree(new int[]{9,3,15,20,7},new int[]{9,15,7,20,3});
+        System.out.println(node);
+    }
+
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int iLen = inorder.length;
+        int pLen = postorder.length;
+        if (iLen==0&&pLen==0)
+            return null;
+        Map<Integer,Integer> iMap = new HashMap<>();
+        for (int i = 0;i<iLen;i++)
+            iMap.put(inorder[i],i);
+        return createNode(postorder,0,iLen-1,0, pLen-1,iMap);
+    }
+
+    private TreeNode createNode(int[] postOrder,int iStart,int iEnd,int pStart,int pEnd,Map<Integer,Integer> iMap){
+        TreeNode tree = new TreeNode(postOrder[pEnd]);
+        tree.left = null;
+        tree.right = null;
+        if (iStart==iEnd&&pStart==pEnd)
+            return tree;
+        int pos = iMap.get(postOrder[pEnd]);
+        int leftLen = pos-iStart;
+        int rightLen = iEnd-pos;
+        if (leftLen>0){
+            tree.left = createNode(postOrder,iStart,pos-1,pStart,pEnd-rightLen-1,iMap);
+        }
+        if (rightLen>0){
+            tree.right = createNode(postOrder,pos+1,iEnd,pEnd-rightLen,pEnd-1,iMap);
+        }
+        return tree;
+    }
+
+
+    private class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+}
