@@ -51,7 +51,7 @@
 //head->next 为 head 所指向的节点的下一个节点的指针
 
 //TreeNode* root = new TreeNode(val) 返回从堆中生成一个值为 val 的链表节点的指针给root
-//root->left 是 root 所指向节点的左子树的指针, root->right 同理
+//root->left 是 root 所指向节点的左子树根节点的指针, root->right 同理
 
 //解题思路
 //1.快慢指针分离成左子树所有节点构成的链表、根节点和右子树所有节点构成的链表
@@ -88,7 +88,7 @@ TreeNode* sortedListToBST(ListNode* head) {
 #### 3.1.2 复杂度分析
 方法|空间复杂度|时间复杂度
 --- | --- | ---
-快慢指针+递归|O(1)|O(nlogn)
+快慢指针+递归|O(n)|O(nlogn)
 #### 3.1.3 难点分析
 1. 快慢指针分离链表
 2. 边界情况的考虑
