@@ -1,0 +1,11 @@
+```
+func lengthOfLastWord(s string) int {
+  l := len(s)
+	i := l-1
+	count := 0
+	for ;i>=0 && s[i] == ' ';i--{}
+	for ;i>=0 && s[i] != ' ';i--{count++}
+	return count
+}
+    
+```
