@@ -1,5 +1,6 @@
 ```java
-public void solveSudoku(char[][] board) {
+class Solution {
+    public void solveSudoku(char[][] board) {
         // 记录某行的某位数字是否已经被摆放
         boolean[][] row = new boolean[9][9];
         // 记录某列的某位数字是否已经被摆放
@@ -54,4 +55,5 @@ public void solveSudoku(char[][] board) {
         }
         return false;
     }
-    ```
+}
+```
