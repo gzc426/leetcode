@@ -1,3 +1,4 @@
+```java
 class Solution {
     public int findLongestChain(int[][] pairs) {
         if (pairs == null || pairs.length == 0) {
@@ -15,3 +16,4 @@ class Solution {
         return res;
     }
 }
+```
